@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+	<head>
+		<title>downloads</title>
+	</head>
+	<body>
+		<h1>FILES</h1>
+		<pre>
+		{% for file_name in All_file %}
+		<a href="uploads/{{file_name}}" download={{file_name}}>{{file_name}}</a>
+		{% endfor %}
+		</pre>
+	</body>
+	</html>

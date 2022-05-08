@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Half </title>
+	</head>
+	<body>
+		<h1>FILES</h1>
+		<hr/>
+		<h3>Upload</h3>
+		<form method=post enctype=multipart/form-data>
+			<input type=file name=file>
+			<input type=submit value=Upload>
+		</form>
+		<hr/>
+		<h3>Download</h3>
+		<pre>
+		{% for file_name in All_file %}
+		<a href="file/{{file_name}}" download={{file_name}}>{{file_name}}</a>
+		{% endfor %}
+		</pre>
+	</body>
+</html>
