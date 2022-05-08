@@ -4,7 +4,7 @@ from flask import Flask, render_template
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-            SECRET_KEY='dev',
+            SECRET_KEY=b'\xa1&\xc5\x0f\x10\xa6\t\xc8\xcd\xc6\xa3\x03U]7\x13',
             DATABASE=os.path.join(app.instance_path, 'flasker.sqlite'),
     )
     if test_config is None:
@@ -26,14 +26,9 @@ def create_app(test_config=None):
     # 注册auth蓝图
     from . import auth, filemanager, blog
     app.register_blueprint(auth.bp)
-    app.register_blueprint(filemanager.bp)
     app.register_blueprint(blog.bp)
+    app.add_url_rule('/', endpoint="index")
 
-
-    # 主页
-    @app.route('/', methods=['GET', 'POST'])
-    def index():
-        return render_template('index.html')
     return app
 
 
